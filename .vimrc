@@ -49,7 +49,7 @@ Bundle 'fisadev/FixedTaskList.vim'
 " Surround
 Bundle 'tpope/vim-surround'
 " Autoclose
-" Bundle 'Townk/vim-autoclose' disabled cuz breaks arrow keys
+Bundle 'Townk/vim-autoclose'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
@@ -60,12 +60,21 @@ Bundle 'zirrostig/vim-schlepp'
 " syntax highlight
 Bundle 'scrooloose/syntastic'
 " Advanced autocomplete, go to definition, etc
-Bundle 'Valloric/YouCompleteMe'
+" Disabled by default because it's hard to setup and is mostly for python
+" Bundle 'Valloric/YouCompleteMe'
 " Handling virtualenvs
 Bundle "jmcantrell/vim-virtualenv"
 " Better folding
 Plugin 'tmhedberg/SimpylFold'
-
+" Tab list panel
+Bundle 'kien/tabman.vim'
+" Window chooser
+Bundle 't9md/vim-choosewin'
+" XML/HTML tags navigation
+Bundle 'matchit.zip'
+" session management
+Bundle "xolox/vim-misc"
+Bundle "xolox/vim-session"
 
 
 " Plugins from vim-scripts repos:
@@ -227,11 +236,11 @@ let g:pymode_rope = 1
 " disable auto documentation
 let g:pymode_doc = 0
 " show doc \ definition on L
-let g:pymode_rope_show_doc_bind = 'L'
+"let g:pymode_rope_show_doc_bind = 'L'
 " turn off autocompletion
-let g:pymode_rope_completion = 0
+let g:pymode_rope_completion = 1
 " rename bind
-let g:pymode_rope_rename_bind = 'R'
+"let g:pymode_rope_rename_bind = 'R'
 
 
 " Airline-----------------------------------
