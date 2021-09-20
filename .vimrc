@@ -24,73 +24,42 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+
 " ============================================================================
 " Active plugins
 " You can disable or add new ones here:
 
 " Plugins from github repos:
 
-" Better file browser
+" File browser
 Bundle 'scrooloose/nerdtree'
-" Code commenter
-Bundle 'scrooloose/nerdcommenter'
+
+Plugin 'tpope/vim-commentary'
+
 " Class/module browser
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
+
 " Code and files fuzzy finder
-Bundle 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " Extension to ctrlp, for fuzzy command finder
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
-" Airline
-Bundle 'bling/vim-airline'
-" Consoles as buffers
-Bundle 'rosenfeld/conque-term'
-" Pending tasks list
-Bundle 'fisadev/FixedTaskList.vim'
-" Surround
-Bundle 'tpope/vim-surround'
-" Autoclose
-Bundle 'Townk/vim-autoclose'
-" Python mode (indentation, doc, refactor, lints, code checking, motion and
-" operators, highlighting, run and ipdb breakpoints)
-Bundle 'klen/python-mode'
-" awesome colorscheme
-Bundle 'tomasr/molokai'
-" drag visuals
-Bundle 'zirrostig/vim-schlepp'
-" syntax highlight
-Bundle 'scrooloose/syntastic'
-" Advanced autocomplete, go to definition, etc
-" Disabled by default because it's hard to setup and is mostly for python
-" Bundle 'Valloric/YouCompleteMe'
-" Handling virtualenvs
-Bundle "jmcantrell/vim-virtualenv"
-" Better folding
+Plugin 'fisadev/vim-ctrlp-cmdpalette'
+
+Plugin 'vim-airline/vim-airline'
+
+Plugin 'tpope/vim-surround'
+
+Plugin 'tomasiser/vim-code-dark'
+
 Plugin 'tmhedberg/SimpylFold'
-" Tab list panel
-Bundle 'kien/tabman.vim'
-" Window chooser
-Bundle 't9md/vim-choosewin'
-" XML/HTML tags navigation
-Bundle 'matchit.zip'
-" session management
-Bundle "xolox/vim-misc"
-Bundle "xolox/vim-session"
 
+Plugin 'IndexedSearch'
 
-" Plugins from vim-scripts repos:
+Plugin 'klen/python-mode'
 
-" Search results counter
-Bundle 'IndexedSearch'
+Plugin 'vim-syntastic/syntastic'
 
-
-" ============================================================================
-" Install plugins the first time vim runs
-
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
-endif
+" Plugin 'ycm-core/YouCompleteMe'
 
 
 " ============================================================================
@@ -126,8 +95,9 @@ set ignorecase
 syntax on
 " use 256 colors when possible
 if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
-	let &t_Co = 256
-    colorscheme molokai
+        let &t_Co = 256
+    colorscheme codedark
+    let g:airline_theme = 'codedark'
 else
     colorscheme delek
 endif
@@ -169,25 +139,27 @@ set foldlevel=99
 nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
 
-
 " ============================================================================
 " Plugins settings and mappings
 " Edit them as you wish.
 
 " YouCompleteMe-----------------------
 " Code lookup on F3
-execute "set <F3>=<C-v><F3>"
-map <F3> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" execute "set <F3>=<C-v><F3>"
+" map <F3> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_server_python_interpreter='python3'
+" let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_confirm_extra_conf = 0
 
 
-" Tagbar ----------------------------- 
+" Tagbar -----------------------------
 
 " toggle tagbar display
 map <F4> :TagbarToggle<CR>
 " autofocus on tagbar open
 let g:tagbar_autofocus = 1
 
-" NERDTree ----------------------------- 
+" NERDTree -----------------------------
 
 " toggle nerdtree display
 execute "set <M-1>=\e1"
@@ -197,17 +169,12 @@ nmap <M-2> :NERDTreeFind<CR>
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
-" Tasklist ------------------------------
-
-" show pending tasks list
-map <F2> :TaskList<CR>
-
 
 " vim schelpp \ drag visual--------------
-vmap <unique> <C-up>    <Plug>SchleppUp
-vmap <unique> <C-down>  <Plug>SchleppDown
-vmap <unique> <C-left>  <Plug>SchleppLeft
-vmap <unique> <C-right> <Plug>SchleppRight
+"vmap <unique> <C-up>    <Plug>SchleppUp
+"vmap <unique> <C-down>  <Plug>SchleppDown
+"vmap <unique> <C-left>  <Plug>SchleppLeft
+"vmap <unique> <C-right> <Plug>SchleppRight
 
 
 " Syntastic------------------------------
@@ -269,4 +236,3 @@ au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-
